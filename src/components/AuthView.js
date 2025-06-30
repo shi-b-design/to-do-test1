@@ -1,8 +1,9 @@
 import { auth } from '../lib/auth.js'
 
 export class AuthView {
-  constructor() {
-    this.isLogin = true
+  constructor(initialMode = 'signin') {
+    this.isLogin = initialMode === 'signin'
+    this.onBackToLanding = null
   }
 
   render() {
@@ -10,6 +11,7 @@ export class AuthView {
     container.className = 'auth-container'
     container.innerHTML = `
       <div class="auth-box">
+        <button class="btn btn-ghost back-btn" id="backBtn">← 戻る</button>
         <h1>Todo App Premium</h1>
         <p class="tagline">Organize your life with powerful features</p>
         
@@ -50,6 +52,13 @@ export class AuthView {
     const formTitle = container.querySelector('#formTitle')
     const submitBtn = container.querySelector('button[type="submit"]')
     const authSwitchText = container.querySelector('.auth-switch')
+    const backBtn = container.querySelector('#backBtn')
+    
+    backBtn.addEventListener('click', () => {
+      if (this.onBackToLanding) {
+        this.onBackToLanding()
+      }
+    })
     
     form.addEventListener('submit', async (e) => {
       e.preventDefault()

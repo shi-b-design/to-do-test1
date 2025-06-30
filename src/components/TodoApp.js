@@ -174,15 +174,13 @@ export class TodoApp {
       if (e.target.classList.contains('delete-btn')) {
         const id = e.target.dataset.id
         
-        if (confirm('Are you sure you want to delete this task?')) {
-          try {
-            await todosDb.deleteTodo(id)
-            this.todos = this.todos.filter(t => t.id !== id)
-            this.renderTodos(container)
-            this.reRender()
-          } catch (error) {
-            alert('Error deleting task: ' + error.message)
-          }
+        try {
+          await todosDb.deleteTodo(id)
+          this.todos = this.todos.filter(t => t.id !== id)
+          this.renderTodos(container)
+          this.reRender()
+        } catch (error) {
+          alert('Error deleting task: ' + error.message)
         }
       }
     })
