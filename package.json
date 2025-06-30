@@ -1,0 +1,21 @@
+{
+  "name": "todo-app-saas",
+  "version": "1.0.0",
+  "description": "Todo app with authentication and Stripe monetization",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "@stripe/stripe-js": "^2.2.0"
+  }
+}
